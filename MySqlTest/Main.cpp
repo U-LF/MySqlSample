@@ -1,6 +1,7 @@
 #include <stdlib.h>
 #include <iostream>
 #include <cctype>
+#include <conio.h>
 
 #include "mysql_connection.h"
 #include <cppconn/driver.h>
@@ -40,9 +41,11 @@ int main()
     cout << "(A) to insert dummy data into the database\n";
     cout << "(B) to retrieve dummy data from the database\n";
     cout << "Your choice: ";
-    cin >> Choice;
+    Choice = _getch();
 
     Choice = toupper(Choice);
+
+    cout << Choice << endl;
 
     switch (Choice)
     {
@@ -78,7 +81,6 @@ int main()
 
                 delete pstmt;
                 delete con;
-                system("pause");
             }
             catch (SQLException What)
             {
@@ -109,16 +111,44 @@ int main()
             {
                 cout << "Something went wrong, Error: " << What.what() << endl;
             }
-            
+
             break;
         }
         default:
         {
             cout << "Invalid choice, Try again\n";
+            system("PAUSE");
+            system("CLS");
             goto a;
             break;
         }
     }
-    
+
+    b:
+    cout << "Would you like to run the program again? (Y/N)\n";
+    cout << "Your choice: ";
+    Choice = _getch();
+
+    Choice = toupper(Choice);
+
+    cout << Choice << endl;
+
+    if (Choice == 'Y')
+    {
+        system("CLS");
+        goto a;
+    }
+    else if (Choice == 'N')
+    {
+        cout << "Goodbye\n";
+    }
+    else
+    {
+        cout << "Invalid choice, Try again\n";
+        system("PAUSE");
+        system("CLS");
+        goto b;
+    }
+
     return 0;
 }
