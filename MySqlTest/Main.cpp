@@ -61,7 +61,7 @@ int main()
                 cout << "Finished dropping table (if existed)" << endl;
                 stmt->execute("CREATE TABLE inventory (id serial PRIMARY KEY, name VARCHAR(50), quantity INTEGER);");
                 cout << "Finished creating table" << endl;
-                delete stmt;
+                //delete stmt;
 
                 pstmt = con->prepareStatement("INSERT INTO inventory(name, quantity) VALUES(?,?)");
                 pstmt->setString(1, "banana");
@@ -79,8 +79,8 @@ int main()
                 pstmt->execute();
                 cout << "One row inserted." << endl;
 
-                delete pstmt;
-                delete con;
+                //delete pstmt;
+                //delete con;
             }
             catch (SQLException What)
             {
@@ -104,8 +104,8 @@ int main()
                     cout << "Name of the item: " << Name << endl;
                     cout << "Quantity of the item: " << Quantity << endl;
                 }
-                delete res;
-                delete stmt;
+                //delete res;
+                //delete stmt;
             }
             catch (SQLException What)
             {
